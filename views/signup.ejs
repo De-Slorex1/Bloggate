@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/post.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lugrasimo&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <title>Sign up</title>
+    <style>
+         .popup {
+            width: 400px;
+            background-color: white;
+            border-radius: 8px;
+            position: absolute;
+            top: 0%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1);
+            color: rgba(255, 69, 0, 0.9);
+            text-align: center;
+            padding: 20px 30px 30px;
+            visibility: hidden;
+            transition: transform 0.4s, top 0.4s;
+        }
+    
+        .open-popup {
+            visibility: visible;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(1);
+        }
+    
+        .popup img {
+            width: 100px;
+            margin-top: -50px;
+            border-radius: 50%;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+    
+        .popup h3 {
+            font-size: 38px;
+            font-weight: 500;
+            padding: 30px 0px 10px;
+        }
+    
+        .popup button {
+            width: 100%;
+            margin: 30px 0px;
+            padding: 10px 0px;
+            background-color: rgba(255, 69, 0, 0.9);
+            color: white;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 15px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <%- include('./partials/navbar.ejs') -%>
+    <div class="postcontainer">
+        <div class="formwrapper">
+            <h2>Signup</h2>
+            <div class="postform">
+                <form action="/api/v1/signup-user" method="post">
+                    <label>First name</label><br>
+                    <input id="firstname" type="text" name="firstname" placeholder="First name" /><br>
+                    <label>Last name</label><br>
+                    <input id="label" type="text" name="lastname" placeholder="Last name" /><br>
+                    <label>Email</label><br>
+                    <input id="email" type="email" name="email" placeholder="Email" /><br>
+                    <label>Password</label><br>
+                    <input id="password" type="password" name="password" placeholder="Password" /><br>
+                    <label>Phone no</label><br>
+                    <input id="tel" type="tel" name="tel" placeholder="Phone no" /><br>
+                    <label>Address</label><br>
+                    <input id="address" type="text" name="address" placeholder="Address" /><br>
+                    <button type="submit">SIGN UP</button><br>
+                    <p>Already have an account? <a href="/login-page">LOGIN</a></p>
+                </form>
+                <div class="popup" id="popup">
+                    <img src="tick.png" alt="tick"/>
+                    <h3>Thank you!</h3>
+                    <p>Your blog has been posted successfully. Thanks!</p>
+                    <button type="button" id="close_btn">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('partials/footer.ejs') -%>
+
+    <!-- <script>
+        let form = document.querySelector('form')
+        form.addEventListener('submit', async (e) => {
+            try {
+                e.preventDefault()
+                let firstname = document.querySelector('#firstname').value
+                let lastname = document.querySelector('#lastname').value
+                let email = document.querySelector('#email').value
+                let password = document.querySelector('#password').value
+                let tel = document.querySelector('#tel').value
+                let address = document.querySelector('#address').value
+                let popup = document.querySelector('#popup')
+                let closeBtn = document.querySelector('#close_btn')
+                let openBtn = document.querySelector('#open_btn')
+                
+                await fetch('/api/v1/signup-user', {
+                    method: 'POST',
+                    body: JSON.stringify({firstname, lastname, email, password, tel, address}),
+                    headers: {"Content-Type": "application/json"}
+                })
+                .then(res => res.json()
+                    .then(data => {
+                        if(data.success) {
+                            openBtn.addEventListener('click', () => {
+                                setTimeout(() => {
+                                    popup.classList.add('open-popup ')
+                                }, 1000)
+                            })
+
+                            closeBtn.addEventListener('click', () => {
+                                setTimeout(() => {
+                                    popup.classList.remove('open-popup ')
+                                }, 1000)
+                            })
+                        }
+                    })
+                )
+                .catch(err => console.log(err.message)) 
+            }
+            catch(err) {
+
+            }
+        })
+    </script> -->
+</body>
+</html>

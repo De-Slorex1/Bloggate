@@ -1,0 +1,55 @@
+footer {
+    background-color: rgb(64, 7, 70);
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    padding: 5rem 0;
+}
+.footer-sect-one h3{
+    padding-bottom: 2rem;
+    font-family: 'Lugrasimo', sans-serif;
+    font-size: 1.6rem;
+}
+.footer-sect-two h3{
+    padding-bottom: 2rem;
+    font-family: sans-serif;
+    font-size: 1.6rem;
+}
+.footer-sect-two ul li {
+    list-style: none;
+    margin: .8rem 0;
+}
+.footer-sect-three h3{
+    padding-bottom: 1rem;
+    font-family: sans-serif;
+    font-size: 1.6rem;
+}
+.footer-sect-two ul li a {
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+.icons {
+    display: flex;
+    margin: 30px 0px;
+}
+.icon {
+    margin: 0px 10px;
+    font-size: 23px;
+    background-color: white;
+    border-radius: 50%;
+    padding: 8px 8px;
+    color: rgb(64, 7, 70);
+}
+.footer-info .info {
+    display: flex;
+    margin: 2rem 0;
+}
+.info .ion {
+    padding: 0px 20px;
+    font-size: 19px;
+    color: white;
+}

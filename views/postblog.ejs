@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/post.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lugrasimo&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <title><%= title %></title>
+    <style>
+        .nav-container {
+            display: flex;
+            width: 100%;
+            padding: 25px 0px;
+            background: linear-gradient(to left, rgba(117, 19, 126, 0.6), rgba(255, 69, 0, 0.6));
+            position: fixed;
+            z-index: 1000;
+        }
+    
+        .navbar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+            padding: 0px 4rem;
+            z-index: 1000;
+            overflow: visible;
+            color: white;
+        }
+    
+        .navbar h3 {
+            font-size: 20px;
+            font-family: "Roboto", sans-serif;
+        }
+    
+        .navbar ul {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            gap: 2rem;
+        }
+    
+        .navbar ul li {
+            list-style: none;
+        }
+    
+        .navbar ul li a {
+            text-decoration: none;
+            color: white;
+            font: 20px;
+            font-family: sans-serif;
+        }
+    
+        .navbar .navbtn {
+            padding: 8px 20px;
+            border-radius: 50px;
+            border: none;
+            background-color: white;
+            color: black;
+            font-size: 16px;
+            font-weight: 600;
+            z-index: 1000;
+        }
+    
+        .navbar .navbtn:hover {
+            background-color: rgba(255, 69, 0, 0.6);
+            color: white;
+            transition: all .2s ease-out;
+        }
+    
+        .popup {
+            width: 400px;
+            background-color: white;
+            border-radius: 8px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1);
+            color: rgba(255, 69, 0, 0.9);
+            text-align: center;
+            padding: 20px 30px 30px;
+            visibility: hidden;
+            transition: transform 0.4s, top 0.4s;
+        }
+    
+        .open-popup {
+            visibility: visible;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(1);
+        }
+    
+        .popup img {
+            width: 100px;
+            margin-top: -50px;
+            border-radius: 50%;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+    
+        .popup h3 {
+            font-size: 38px;
+            font-weight: 500;
+            padding: 30px 0px 10px;
+        }
+    
+        .popup button {
+            width: 100%;
+            margin: 30px 0px;
+            padding: 10px 0px;
+            background-color: rgba(255, 69, 0, 0.9);
+            color: white;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 15px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav-container">
+        <div class="navbar">
+            <h3>Blogify</h3>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/blog">Blogs</a></li>
+                <li><a href="/about">About us</a></li>
+                <li><a href="/admin">Admin</a></li>
+                <li><a href="/contact">Contact us</a></li>
+            </ul>
+            <a href="/logout">
+                <button class="navbtn">Log out</button>
+            </a>
+        </div>
+    </div>
+    <div class="postcontainer">
+        <div class="formwrapper">
+            <h2>Post Blog</h2>
+            <div class="postform">
+                <form action="/api/v1/post-blogs" method="post">
+                    <label>Blog Title</label><br>
+                    <input type="text" placeholder="Blog Title" name="title"/><br>
+                    <label>Blog Email</label><br>
+                    <input type="email" placeholder="Blog Email" name="email"/><br>
+                    <label>Blog Date</label><br>
+                    <input type="date" placeholder="Blog Date" name="date"/><br>
+                    <label>Blog Description</label><br>
+                    <textarea placeholder="Blog Description" name="desc"></textarea><br>
+                    <label>Blog Image Url</label><br>
+                    <input type="text" placeholder="Blog Image Url" name="image"/><br>
+                    <label>Blog Content</label><br>
+                    <textarea placeholder="Blog Content" name="content"></textarea><br>
+                    <label>Blog Writer</label><br>
+                    <input type="text" placeholder="Blog Writer" name="writer"/><br>
+                    <button type="submit" id="open_btn">Post Blog</button>
+                </form>
+            </div>
+            <div class="popup" id="popup">
+                <img src="tick.png" alt="tick"/>
+                <h3>Thank you!</h3>
+                <p>Your blog has been posted successfully. Thanks!</p>
+                <button type="button" id="close_btn">OK</button>
+            </div>
+        </div>
+    </div>
+    <%- include('partials/footer.ejs') -%>
+
+    <!-- <script>
+            let popup = document.querySelector('#popup')
+            let closeBtn = document.querySelector('#close_btn')
+            let openBtn = document.querySelector('#open_btn')
+
+
+            openBtn.addEventListener('click', () => {
+                setTimeout(() => {
+                    popup.classList.add('open-popup ')
+                }, 1000)
+            })
+
+            closeBtn.addEventListener('click', () => {
+                setTimeout(() => {
+                    popup.classList.remove('open-popup ')
+                }, 1000)
+            })
+    </script> -->
+</body>
+</html>

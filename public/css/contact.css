@@ -1,0 +1,110 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box
+}
+.contact-page {
+    padding: 8rem 3rem;
+    width: 100%;
+}
+.contact-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+.contact-image {
+    width: 450px;
+    height: 700px;
+    background-image: linear-gradient(rgba(117, 19, 126,0.5), rgba(255, 69, 0, 0.5)), url('../asset/IMG_2618.WEBP');
+    box-shadow: 0px 0px 2px lightgray;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-size: contain;
+}
+.contact-form {
+    width: 42%;
+    height: 700px;
+    background-color: rgb(253, 253, 253);
+    padding: 20px 1rem 20px 3rem;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    box-shadow: 0px 0px 2px lightgray;
+
+}
+.contact-form h2 {
+    font-size: 2.3rem;
+    font-family: 'Lugrasimo', sans-serif;
+    margin: 15px 0px;
+}
+.contact-form h4 {
+    margin: 8px 5px;
+    color: lightgrey;
+    font-size: .8rem;
+    font-family: sans-serif;
+}
+.contact-info {
+    margin: 25px 0px;
+    display: flex;
+    flex-direction: row;
+}
+.contact-info .info {
+    margin-right: 20px;
+}
+.contact-info .info h3 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    padding: 6px 0px;
+    font-weight: bold;
+}
+.contact-info .info p {
+    color: grey;
+    font-size: 14px;
+}
+.form-wrapper {
+    margin: 5px 0px;
+    display: block;
+}
+.flex-form {
+    display: flex;
+}
+form .flex-form .input {
+    margin: 20px 20px 20px 0px;
+    padding: 13px 0px;
+    outline: none;
+    width: 200px;
+    background: transparent;
+}
+form label {
+    color: rgba(117, 19, 126,0.8);
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+form input {
+    width: 420px;
+    border: none;
+    border-bottom: 1px solid rgba(117, 19, 126,0.8);
+    margin: 20px 20px 20px 0px;
+    padding: 13px 0px;
+    outline: none;
+    background: transparent;
+}
+form textarea {
+    width: 420px;
+    border: none;
+    border-bottom: 1px solid rgba(117, 19, 126,0.8);
+    margin: 20px 20px 20px 0px;
+    height: 70px;
+    outline: none;
+    background: transparent;
+    resize: none;
+}
+form button {
+    padding: 13px 20px;
+    border: none;
+    background-color: rgba(117, 19, 126,0.8);
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+}

@@ -1,0 +1,14 @@
+const mongoose = require('mongoose')
+
+const subscriberSchema = mongoose.Schema({
+    email: {
+        type: String,
+        required: true,
+        unique: true
+        
+    }
+})
+
+const SubscriberModel = mongoose.model("subscribe", subscriberSchema)
+
+module.exports = SubscriberModel;
