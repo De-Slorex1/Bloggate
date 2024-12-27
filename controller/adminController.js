@@ -92,7 +92,6 @@ const handleLogin = async (req, res) => {
                             throw new Error(err.message)
                         }
                         await res.cookie("userToken", token, {maxAge: 1000 * period, httpOnly: true})
-                        await sen
                         res.status(200).json({
                             success: true,
                             userExist,
